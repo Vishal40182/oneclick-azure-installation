@@ -1,0 +1,42 @@
+apiVersion: apps/v1  
+kind: Deployment  
+metadata:  
+  name: telegram-bot-deployment  
+spec:  
+  replicas: 1  
+  selector:  
+    matchLabels:  
+      app: telegram-bot  
+  template:  
+    metadata:  
+      labels:  
+        app: telegram-bot  
+    spec:  
+      containers:  
+        - name: telegram-bot  
+          image: v12hal/unified-telegram:v1  
+          env:  
+          - name: ACTIVITY_API_BASE_URL  
+            value: "${ACT_API_BASE_URL}"
+          - name: STORY_API_BASE_URL
+            value: "${ACT_API_BASE_URL}" 
+          - name: API_PORT  
+            value: "8000"  
+          - name: TELEGRAM_BASE_URL  
+            value: "https://api.telegram.org/bot6790093679:AAHaUFGJKpL5oQSnC52TTD6mmovpmio7H54/getUpdates"  
+          - name: TELEGRAM_TOKEN  
+            value: "6790093679:AAHaUFGJKpL5oQSnC52TTD6mmovpmio7H54" 
+          - name: TELEGRAM_BOT_NAME
+            value: "KPMG_Farm_bot"   
+---  
+apiVersion: v1  
+kind: Service  
+metadata:  
+  name: telegram-bot-service  
+spec:  
+  selector:  
+    app: telegram-bot  
+  ports:  
+    - protocol: TCP  
+      port: 8000  
+      targetPort: 8000   

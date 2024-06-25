@@ -1,0 +1,62 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: nginx
+      # ingressclass.kubernetes.io/is-default-class: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+   
+  
+
+spec:
+  rules:
+    - host: farmpulsetestings.org
+      http:
+        paths:
+          - path: /v1/chat
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: test-srv
+                port:
+                  number: 8000
+          - path: /health
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: test-srv
+                port:
+                  number: 8000
+          - path: /upload
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: test-srv
+                port:
+                  number: 8000
+          - path: /process
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: test-srv
+                port:
+                  number: 8000
+          - path: /delete
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: test-srv
+                port:
+                  number: 8000
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: marqo-service
+                port:
+                  number: 8882
+                        

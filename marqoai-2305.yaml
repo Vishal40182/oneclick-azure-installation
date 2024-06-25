@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: marqo-deployment
+  labels:
+    app: marqo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: marqo
+  template:
+    metadata:
+      labels:
+        app: marqo
+    spec:
+      containers:
+      - name: marqo-container
+        image: marqoai/marqo:1.5.1
+        ports:
+        - containerPort: 8882
+        securityContext:
+          privileged: true
+        env:
+        - name: MARQO_MAX_INDEX_FIELDS
+          value: "400"
+        - name: MARQO_MAX_DOC_BYTES
+          value: "200000"
+        - name: MARQO_MAX_RETRIEVABLE_DOCS
+          value: "600"
+        - name: MARQO_MAX_NUMBER_OF_REPLICAS
+          value: "2"
+        - name: MARQO_MODELS_TO_PRELOAD
+          value: '["flax-sentence-embeddings/all_datasets_v4_mpnet-base"]'
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: marqo-service
+  labels:
+    app: marqo
+spec:
+  selector:
+    app: marqo
+  ports:
+  - protocol: TCP
+    port: 8882
+    targetPort: 8882
+  type: ClusterIP
