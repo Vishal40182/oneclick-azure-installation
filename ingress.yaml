@@ -14,8 +14,7 @@ metadata:
 
 spec:
   rules:
-    - host: farmpulsetestings.org
-      http:
+    - http:
         paths:
           - path: /v1/chat
             pathType: ImplementationSpecific
@@ -23,35 +22,35 @@ spec:
               service:
                 name: test-srv
                 port:
-                  number: 8000
+                  number: 80
           - path: /health
             pathType: ImplementationSpecific
             backend:
               service:
                 name: test-srv
                 port:
-                  number: 8000
+                  number: 80
           - path: /upload
             pathType: ImplementationSpecific
             backend:
               service:
                 name: test-srv
                 port:
-                  number: 8000
+                  number: 80
           - path: /process
             pathType: ImplementationSpecific
             backend:
               service:
                 name: test-srv
                 port:
-                  number: 8000
+                  number: 80
           - path: /delete
             pathType: ImplementationSpecific
             backend:
               service:
                 name: test-srv
                 port:
-                  number: 8000
+                  number: 80
           - path: /
             pathType: Prefix
             backend:

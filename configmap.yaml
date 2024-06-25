@@ -1,0 +1,26 @@
+# configmap.yaml  
+apiVersion: v1  
+kind: ConfigMap  
+metadata:  
+  name: configmap  
+data:
+  SERVICE_ENVIRONMENT: ""
+  OPENAI_API_TYPE: ""
+  OPENAI_API_BASE: ""
+  OPENAI_API_VERSION: ""
+  OPENAI_API_KEY: ""
+  GPT_MODEL: ""
+  LOG_LEVEL: ""
+  BHASHINI_ENDPOINT_URL: ""
+  BHASHINI_API_KEY: ""
+  BHASHINI_USER_ID: ""
+  TRANSLATION_TYPE: ""
+  REDIS_DB: ""
+  BUCKET_TYPE: ""
+  BUCKET_NAME: ""
+  TELEGRAM_BASE_URL: ""
+  TELEGRAM_BOT_TOKEN: ""
+  TELEGRAM_BOT_NAME: ""
+  ACTIVITY_API_BASE_URL: ""
+  STORY_API_BASE_URL: ""
+  

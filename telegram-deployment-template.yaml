@@ -21,13 +21,11 @@ spec:
           - name: STORY_API_BASE_URL
             value: "${ACT_API_BASE_URL}" 
           - name: API_PORT  
-            value: "8000"  
-          - name: TELEGRAM_BASE_URL  
-            value: "https://api.telegram.org/bot6790093679:AAHaUFGJKpL5oQSnC52TTD6mmovpmio7H54/getUpdates"  
-          - name: TELEGRAM_TOKEN  
-            value: "6790093679:AAHaUFGJKpL5oQSnC52TTD6mmovpmio7H54" 
-          - name: TELEGRAM_BOT_NAME
-            value: "KPMG_Farm_bot"   
+            value: "80"  
+          envFrom:  
+          - configMapRef:  
+              name: configmap 
+
 ---  
 apiVersion: v1  
 kind: Service  

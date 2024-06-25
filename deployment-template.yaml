@@ -23,7 +23,10 @@ spec:
             - name: REDIS_HOST
               value: "redis-service"  
             - name: REDIS_PORT
-              value: "6379"   
+              value: "6379" 
+          envFrom:  
+          - configMapRef:  
+              name: configmap 
 
 ---
 apiVersion: v1
@@ -36,5 +39,5 @@ spec:
   ports:
     - name: test
       protocol: TCP
-      port: 8000
+      port: 80
       targetPort: 8000

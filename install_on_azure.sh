@@ -224,6 +224,7 @@ install_azure_dependencies() {
     
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
 
+    kubectl apply -f configmap.yaml
     kubectl apply -f marqoai-2305.yaml
     kubectl apply -f redis.yaml
     echo "Marqo and redis file executed successfully....." 
